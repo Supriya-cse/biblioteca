@@ -13,11 +13,11 @@ class LibraryHelperTest {
         List<Book> expectedBookList = new ArrayList<>();
         LibraryHelper libraryHelper = new LibraryHelper();
 
-        expectedBookList.add(new Book("Harry Potter"));
-        expectedBookList.add(new Book("Stephen Hawking"));
-        expectedBookList.add(new Book("Sherlock Homes"));
+        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
+        expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
-        assertEquals(libraryHelper.addBooksToTheLibrary().get(1).toString(), expectedBookList.get(0).toString());
+        assertEquals(libraryHelper.addBooksToTheLibrary().get(0).toString(), expectedBookList.get(0).toString());
 
 
     }

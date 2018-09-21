@@ -3,24 +3,36 @@ package biblioteca.controller;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 
+import java.util.List;
+
 
 public class LibraryManagementSystem {
 
-    private final String WELCOME_MESSAGE = "Welcome to the Banglore Library";
-    private ConsoleOutputDriver libraryConsoleOutputDriver = new ConsoleOutputDriver();
-    private Library library;
+    private final String WELCOME_MESSAGE = "Welcome to the Bangalore Library";
+    private ConsoleOutputDriver libraryConsoleOutputDriver;
+    private Library library = new Library();
+
+    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver) {
+        this.libraryConsoleOutputDriver = libraryConsoleOutputDriver;
+    }
+
+    public void displayBookDetails() {
+        displayBooks(library.getListOfBooks());
+    }
 
     public void start() {
         message();
-        displayBooks();
     }
 
-    void message() {
+    private void message() {
         libraryConsoleOutputDriver.print(WELCOME_MESSAGE);
     }
 
-    void displayBooks() {
-        library = new Library();
-        library.displayListOfBooks();
+    private void displayBooks(List<String> bookDetails) {
+        libraryConsoleOutputDriver.printListAsColumns("Title,Author,Year");
+
+        for (String string : bookDetails) {
+            libraryConsoleOutputDriver.printListAsColumns(string);
+        }
     }
 }

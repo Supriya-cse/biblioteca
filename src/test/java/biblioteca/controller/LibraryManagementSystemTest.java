@@ -1,22 +1,39 @@
 package biblioteca.controller;
 
-import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 class LibraryManagementSystemTest {
 
+    private ConsoleOutputDriver consoleOutputDriver;
+    private LibraryManagementSystem libraryManagementSystem;
+
+    @BeforeEach
+    void init() {
+        consoleOutputDriver = Mockito.mock(ConsoleOutputDriver.class);
+        libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver);
+
+    }
+
+
     @Test
     void testForWelcomeMessage() {
-        ConsoleOutputDriver consoleOutputDriver = Mockito.mock(ConsoleOutputDriver.class);
-        Mockito.verify(consoleOutputDriver).print("Welcome Message");
+        libraryManagementSystem.start();
+        Mockito.verify(consoleOutputDriver).print("Welcome to the Bangalore Library");
+    }
+
+    @Test
+    void testForDisplayingHeaderForListOfBooks() {
+        libraryManagementSystem.displayBookDetails();
+        Mockito.verify(consoleOutputDriver).printListAsColumns("Title,Author,Year");
     }
 
     @Test
     void testForDisplayingListOfBooks() {
-        Library library = Mockito.mock(Library.class);
-        Mockito.verify(library).displayListOfBooks();
+        libraryManagementSystem.displayBookDetails();
+        Mockito.verify(consoleOutputDriver).printListAsColumns("Harry Potter,JK rowling,1997");
     }
 
 

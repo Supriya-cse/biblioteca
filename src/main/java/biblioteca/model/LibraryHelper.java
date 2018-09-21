@@ -7,9 +7,9 @@ public class LibraryHelper {
     private List<Book> listOfBooks = new ArrayList<>();
 
     public List<Book> addBooksToTheLibrary() {
-        listOfBooks.add(new Book("Harry Potter"));
-        listOfBooks.add(new Book("Stephen Hawking"));
-        listOfBooks.add(new Book("Sherlock Homes"));
+        listOfBooks.add(new Book("Harry Potter", "JK rowling", 1997));
+        listOfBooks.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        listOfBooks.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
         return listOfBooks;
     }
 

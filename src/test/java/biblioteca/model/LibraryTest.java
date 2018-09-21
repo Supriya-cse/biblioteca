@@ -16,11 +16,11 @@ class LibraryTest {
         List<Book> expectedBookList = new ArrayList<>();
         Library library = new Library();
 
-        expectedBookList.add(new Book("Harry Potter"));
-        expectedBookList.add(new Book("Stephen Hawking"));
-        expectedBookList.add(new Book("Sherlock Homes"));
+        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
+        expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
-        assertEquals(expectedBookList.get(0).toString(),library.displayListOfBooks().get(0));
+        assertEquals(expectedBookList.get(0).toString(),library.getListOfBooks().get(0));
 
     }
 }

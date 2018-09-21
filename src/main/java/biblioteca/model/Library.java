@@ -13,11 +13,11 @@ public class Library {
         this.books = libraryHelper.addBooksToTheLibrary();
     }
 
-    public List<String> displayListOfBooks() {
-        List<String> listOfBooks = new ArrayList<>();
+     public List<String> getListOfBooks() {
+        List<String> bookDetails = new ArrayList<>();
         for (Book book : books) {
-            listOfBooks.add(book.toString());
+            bookDetails.add(book.toString());
         }
-        return listOfBooks;
+        return bookDetails;
     }
 }
