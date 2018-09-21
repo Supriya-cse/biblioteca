@@ -9,7 +9,6 @@ public class BibliotecaApplication {
         ConsoleOutputDriver consoleOutputDriver = new ConsoleOutputDriver();
         LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver);
         libraryManagementSystem.start();
-        libraryManagementSystem.displayBookDetails();
     }
 
 }

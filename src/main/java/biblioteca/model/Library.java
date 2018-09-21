@@ -10,7 +10,7 @@ public class Library {
     private List<Book> books;
 
     public Library() {
-        this.books = libraryHelper.addBooksToTheLibrary();
+        this.books = libraryHelper.listOfLibraryItems();
     }
 
      public List<String> getListOfBooks() {

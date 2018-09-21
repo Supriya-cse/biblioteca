@@ -1,38 +1,60 @@
 package biblioteca.controller;
-
 import biblioteca.model.Library;
+import biblioteca.model.MainMenu;
 import biblioteca.view.ConsoleOutputDriver;
+import biblioteca.view.InputDriver;
 
-import java.util.List;
+import static biblioteca.common.Constants.*;
 
 
 public class LibraryManagementSystem {
 
-    private final String WELCOME_MESSAGE = "Welcome to the Bangalore Library";
     private ConsoleOutputDriver libraryConsoleOutputDriver;
-    private Library library = new Library();
+    private InputDriver inputDriver;
+    private MainMenu menu;
+    private Library library;
 
     public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver) {
         this.libraryConsoleOutputDriver = libraryConsoleOutputDriver;
+        this.inputDriver = new InputDriver();
+        this.library = new Library();
     }
 
-    public void displayBookDetails() {
-        displayBooks(library.getListOfBooks());
-    }
 
     public void start() {
         message();
+        displayMenu();
+        representationOfMenuBasedOnChoice();
     }
 
     private void message() {
         libraryConsoleOutputDriver.print(WELCOME_MESSAGE);
     }
 
-    private void displayBooks(List<String> bookDetails) {
-        libraryConsoleOutputDriver.printListAsColumns("Title,Author,Year");
+    private String readMenuOptionFromUser() {
+        this.libraryConsoleOutputDriver.print(ENTER_YOUR_OPTION);
+        return this.inputDriver.readInput();
+    }
 
-        for (String string : bookDetails) {
-            libraryConsoleOutputDriver.printListAsColumns(string);
-        }
+
+    private void displayMenu() {
+        this.libraryConsoleOutputDriver.print(LINE_SEPERATOR);
+        this.libraryConsoleOutputDriver.print(MENU_HEADER);
+        this.libraryConsoleOutputDriver.print("Print 1 for ListOfBooks");
+        this.libraryConsoleOutputDriver.print("Print 2 for Quit");
+    }
+
+
+    private void representationOfMenuBasedOnChoice() {
+        MainMenu menu[] = MainMenu.values();
+        int input = Integer.parseInt(readMenuOptionFromUser());
+            for (MainMenu element : menu
+            ) {
+                if (input == element.ordinal() + 1) {
+                    element.act(libraryConsoleOutputDriver, library.getListOfBooks());
+                }
+            }
     }
 }
+
+

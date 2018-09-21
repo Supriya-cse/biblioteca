@@ -1,6 +1,7 @@
 package biblioteca.model;
 
 public class Book {
+    private static final String BOOK_REPRESENTATION_FORMAT = "%-35s %-35s %-10d" ;
     private String title;
     private String author;
     private int publishedYear;
@@ -13,15 +14,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.valueOf(title+","+author+","+publishedYear);
+        return String.format(BOOK_REPRESENTATION_FORMAT, this.title, this.author, this.publishedYear);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if(this.getClass()!=obj.getClass()){
-            return false;
-        }
-        Book book = (Book)obj;
-        return book.title == this.title && this.author==book.author && book.publishedYear ==this.publishedYear;
-    }
 }

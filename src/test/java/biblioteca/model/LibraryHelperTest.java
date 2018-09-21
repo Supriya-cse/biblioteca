@@ -17,7 +17,7 @@ class LibraryHelperTest {
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
         expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
-        assertEquals(libraryHelper.addBooksToTheLibrary().get(0).toString(), expectedBookList.get(0).toString());
+        assertEquals(libraryHelper.listOfLibraryItems().get(0).toString(), expectedBookList.get(0).toString());
 
 
     }
