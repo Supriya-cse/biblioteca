@@ -64,10 +64,29 @@ class LibraryTest {
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
 
 
+
         library.checkOut(checkOutBook);
         library.checkOut(anotherBook);
 
         assertEquals(library.getListOfBooks().size(), expectedBookList.size());
     }
+
+    @Test
+    void testForReturnABook() {
+        String checkOutBook = "Sherlock Homes";
+        List<Book> expectedBookList = new ArrayList<>();
+        Library library = new Library();
+
+        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
+        expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
+
+
+        library.checkOut(checkOutBook);
+        library.returnBook(checkOutBook);
+
+        assertEquals(library.getListOfBooks().size(), expectedBookList.size());
+    }
+
 
 }

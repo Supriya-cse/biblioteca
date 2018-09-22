@@ -18,7 +18,5 @@ class LibraryHelperTest {
         expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
         assertEquals(libraryHelper.listOfLibraryItems().get(0).toString(), expectedBookList.get(0).toString());
-
-
     }
 }
