@@ -1,11 +1,11 @@
 package biblioteca.controller;
 
 import biblioteca.model.Library;
+import biblioteca.model.MainMenu;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
 
 import static biblioteca.common.Constants.*;
-import static biblioteca.model.MainMenu.*;
 
 
 public class LibraryManagementSystem {
@@ -14,7 +14,7 @@ public class LibraryManagementSystem {
     private InputDriver inputDriver;
     private Library library;
 
-    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver,Library library) {
+    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library) {
         this.outputDriver = libraryConsoleOutputDriver;
         this.library = library;
         this.inputDriver = inputDriver;
@@ -23,7 +23,7 @@ public class LibraryManagementSystem {
 
     public void start() {
         message();
-        displayMenu();
+        menuSelection();
     }
 
     private void message() {
@@ -31,46 +31,36 @@ public class LibraryManagementSystem {
     }
 
     private int readMenuOptionFromUser() {
-        displayMenuOptions();
         outputDriver.print("");
         outputDriver.print(ENTER_YOUR_OPTION);
         return inputDriver.readInput();
     }
 
 
-    private void displayMenuOptions() {
+    private void displayMenuHeader() {
         this.outputDriver.print("");
         this.outputDriver.print(MENU_HEADER);
-        this.outputDriver.print("Print 1 for ListOfBooks");
-        this.outputDriver.print("Print 2 for CheckOut Book");
-        this.outputDriver.print("Print 3 to Return a book");
-        this.outputDriver.print("Print 4 to QUIT");
     }
 
-
-
-    private void displayMenu() {
+    private void menuSelection() {
+        MainMenu menu[] = MainMenu.values();
         int option;
-        int quitOption = 4;
-        do {
+        displayMenu(menu);
+       do {
             option = readMenuOptionFromUser();
-            switch (option) {
-                case 1:
-                    LIST_OF_BOOKS.act(outputDriver, inputDriver, library);
-                    break;
-                case 2:
-                    CHECKOUT_BOOK.act(outputDriver,inputDriver,library);
-                    break;
-                case 3:
-                    RETURN_BOOK.act(outputDriver,inputDriver,library);
-                    break;
-                default:
-                    INVALID_OPTION.act(outputDriver, inputDriver, library);
-                    break;
+            if (option < menu.length) {
+                MainMenu choice = menu[option];
+                choice.perform(outputDriver, inputDriver, library);
             }
-        }while(option!=quitOption);
+        }while (option!=0);
     }
 
+    private void displayMenu(MainMenu[] menu) {
+         displayMenuHeader();
+        for (MainMenu menu1:menu) {
+            menu1.display();
+        }
+    }
 
 
 }

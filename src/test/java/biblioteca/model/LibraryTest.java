@@ -62,9 +62,6 @@ class LibraryTest {
         Library library = new Library();
 
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
-
-
-
         library.checkOut(checkOutBook);
         library.checkOut(anotherBook);
 
@@ -80,7 +77,6 @@ class LibraryTest {
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
         expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
-
 
         library.checkOut(checkOutBook);
         library.returnBook(checkOutBook);

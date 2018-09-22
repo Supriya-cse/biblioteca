@@ -1,7 +1,8 @@
 package biblioteca.model;
 
+import static biblioteca.common.Constants.BOOK_REPRESENTATION_FORMAT;
+
 public class Book {
-    private static final String BOOK_REPRESENTATION_FORMAT = "%-35s %-35s %-10d" ;
     private String title;
     private String author;
     private int publishedYear;
@@ -19,10 +20,10 @@ public class Book {
 
     @Override
     public boolean equals(Object obj) {
-        if(this.getClass()!=obj.getClass()){
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
-       Book book = (Book)obj;
+        Book book = (Book) obj;
         return this.title.equals(book.title);
     }
 }

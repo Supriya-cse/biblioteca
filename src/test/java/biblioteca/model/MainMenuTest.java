@@ -11,7 +11,7 @@ import java.io.ByteArrayInputStream;
 
 public class MainMenuTest {
 
-    private ConsoleOutputDriver consoleOutputDriver;
+/*    private ConsoleOutputDriver consoleOutputDriver;
     private Library library;
     private InputDriver inputDriver;
 
@@ -58,5 +58,5 @@ public class MainMenuTest {
 
     }
 
-
+*/
 }
