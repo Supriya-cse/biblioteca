@@ -1,6 +1,6 @@
 package biblioteca.controller;
 
-import biblioteca.model.MainMenu;
+import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,25 +14,27 @@ class LibraryManagementSystemTest {
     private ConsoleOutputDriver consoleOutputDriver;
     private LibraryManagementSystem libraryManagementSystem;
     private InputDriver inputDriver;
+    private Library library;
 
     @BeforeEach
     void init() {
         consoleOutputDriver = Mockito.mock(ConsoleOutputDriver.class);
-        libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver);
         inputDriver = Mockito.mock(InputDriver.class);
-
+        libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver,inputDriver,library);
     }
 
     @Test
     void testForWelcomeMessage() {
         libraryManagementSystem.start();
-
+        when(inputDriver.readInput()).thenReturn(1).thenReturn(3);
         Mockito.verify(consoleOutputDriver).print("Welcome to the Bangalore Library");
     }
 
     @Test
     void testForMenu(){
-        when(inputDriver.readInput()).thenReturn("1");
+        libraryManagementSystem.start();
+        when(inputDriver.readInput()).thenReturn(1).thenReturn(3);
+        Mockito.verify(inputDriver).readInput();
     }
 
 

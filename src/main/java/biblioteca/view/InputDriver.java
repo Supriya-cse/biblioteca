@@ -4,8 +4,14 @@ import java.util.Scanner;
 //Takes input from user
 public  class InputDriver {
 
-    public String readInput() {
+    public int readInput() {
         Scanner input=new Scanner(System.in);
-        return input.next();
+        return input.nextInt();
     }
+
+    public String readInputString(){
+        Scanner inputString = new Scanner(System.in);
+        return inputString.nextLine();
+    }
+
 }
