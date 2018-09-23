@@ -1,5 +1,6 @@
 package biblioteca;
 
+import biblioteca.command.CommandFactory;
 import biblioteca.controller.LibraryManagementSystem;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
@@ -11,7 +12,8 @@ public class BibliotecaApplication {
         Library library = new Library();
         ConsoleOutputDriver consoleOutputDriver = new ConsoleOutputDriver();
         InputDriver inputDriver=new InputDriver();
-        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver,inputDriver,library);
+        CommandFactory commandFactory=new CommandFactory();
+        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver,inputDriver,library,commandFactory);
         libraryManagementSystem.start();
     }
 

@@ -1,7 +1,8 @@
 package biblioteca.controller;
 
+import biblioteca.command.Command;
+import biblioteca.command.CommandFactory;
 import biblioteca.model.Library;
-import biblioteca.model.MainMenu;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
 
@@ -10,14 +11,17 @@ import static biblioteca.common.Constants.*;
 
 public class LibraryManagementSystem {
 
+    private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;
+    private CommandFactory commandFactory;
 
-    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library) {
+    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library, CommandFactory commandFactory) {
         this.outputDriver = libraryConsoleOutputDriver;
         this.library = library;
         this.inputDriver = inputDriver;
+        this.commandFactory = commandFactory;
     }
 
 
@@ -43,22 +47,30 @@ public class LibraryManagementSystem {
     }
 
     private void menuSelection() {
-        MainMenu menu[] = MainMenu.values();
         int option;
-        displayMenu(menu);
-       do {
+        displayMenu();
+        do {
             option = readMenuOptionFromUser();
-            if (option < menu.length) {
-                MainMenu choice = menu[option];
-                choice.perform(outputDriver, inputDriver, library);
-            }
-        }while (option!=0);
+            Command command = commandBasedOnUserChoice(option);
+            command.perform(outputDriver, inputDriver, library);
+
+        } while (option != 0);
     }
 
-    private void displayMenu(MainMenu[] menu) {
-         displayMenuHeader();
-        for (MainMenu menu1:menu) {
-            menu1.display();
+    private Command commandBasedOnUserChoice(int option) {
+        if(option<options.length) {
+            String choice = options[option];
+            return this.commandFactory.getCommand(choice);
+        }
+        return this.commandFactory.getCommand("Invalid command");
+    }
+
+    private void displayMenu() {
+        displayMenuHeader();
+        int i = 0;
+        for (String option : options) {
+            this.outputDriver.print(i + " " + option);
+            i++;
         }
     }
 
