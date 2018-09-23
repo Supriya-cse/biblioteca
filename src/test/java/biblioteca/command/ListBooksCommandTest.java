@@ -1,6 +1,4 @@
-package biblioteca.common;
-
-import biblioteca.command.ListBooksCommand;
+package biblioteca.command;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -30,7 +28,6 @@ class ListBooksCommandTest {
         books.add(String.format(BOOK_REPRESENTATION_FORMAT,"HarryPotter","Jk rowling",1997));
         books.add(String.format(BOOK_REPRESENTATION_FORMAT,"Stephen Hawking", "Kristin Larsen",1998));
         books.add(String.format(BOOK_REPRESENTATION_FORMAT,"Sherlock Homes","Arthur Canon",1996));
-
         when(library.getListOfBooks()).thenReturn(books);
         listBooksCommand = new ListBooksCommand();
         listBooksCommand.perform(output,input,library);

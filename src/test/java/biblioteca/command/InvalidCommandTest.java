@@ -1,4 +1,4 @@
-package biblioteca.common;
+package biblioteca.command;
 import biblioteca.command.InvalidCommand;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class InvalidCommandTest {
+ class InvalidCommandTest {
 
     private ConsoleOutputDriver output;
     private InvalidCommand invalidCommand;
