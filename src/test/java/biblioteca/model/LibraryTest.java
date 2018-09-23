@@ -36,7 +36,7 @@ class LibraryTest {
         Library library = new Library(libraryItems);
 
 
-        library.checkOut(checkOutBook);
+        library.checkOut(new Book(checkOutBook, null, 1000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 2);
         assertEquals(libraryItems.size(), 4);
@@ -50,8 +50,8 @@ class LibraryTest {
         List<LibraryItem> libraryItems = listOfLibraryItems();
         Library library = new Library(libraryItems);
 
-        library.checkOut(checkOutBookTitle);
-        library.checkOut(anotherBookTitle);
+        library.checkOut(new Book(checkOutBookTitle, null, 1000));
+        library.checkOut(new Book(anotherBookTitle, null, 2000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 1);
         assertEquals(libraryItems.size(), 3);
@@ -64,7 +64,7 @@ class LibraryTest {
         List<LibraryItem> libraryItems = listOfLibraryItems();
         Library library = new Library(libraryItems);
 
-        library.checkOut(checkOutBookTitle);
+        library.checkOut(new Book(checkOutBookTitle, null, 1000));
         library.returnBook(checkOutBookTitle);
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 3);

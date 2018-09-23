@@ -35,7 +35,7 @@ class CommandFactoryTest {
     @Test
     void testForCheckoutCommand() {
         Command command = this.commandFactory.getCommand("checkout book");
-        assertEquals(command.getClass(), CheckOutCommand.class);
+        assertEquals(command.getClass(), CheckOutBookCommand.class);
     }
 
     @Test

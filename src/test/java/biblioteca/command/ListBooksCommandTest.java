@@ -1,5 +1,6 @@
 package biblioteca.command;
 
+import biblioteca.model.Book;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import biblioteca.model.Book;
 
 import java.util.ArrayList;
 

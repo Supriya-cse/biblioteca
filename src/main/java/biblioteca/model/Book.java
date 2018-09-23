@@ -7,7 +7,7 @@ public class Book implements LibraryItem {
     private String author;
     private int publishedYear;
 
-    Book(String title, String author, int publishedYear) {
+    public Book(String title, String author, int publishedYear) {
         this.title = title;
         this.author = author;
         this.publishedYear = publishedYear;
@@ -24,6 +24,6 @@ public class Book implements LibraryItem {
             return false;
         }
         Book book = (Book) obj;
-        return this.title.equals(book.title);
+        return this.title.equalsIgnoreCase(book.title);
     }
 }

@@ -1,5 +1,6 @@
 package biblioteca.command;
 
+import biblioteca.model.Book;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -10,13 +11,12 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
-class CheckOutCommandTest {
+class CheckOutBookCommandTest {
 
     private ConsoleOutputDriver output;
     private InputDriver input;
     private Library library;
-    private InputDriver inputDriver;
-    private CheckOutCommand checkOutCommand;
+    private CheckOutBookCommand checkOutBookCommand;
 
     @BeforeEach
     void init() {
@@ -30,9 +30,9 @@ class CheckOutCommandTest {
     @Test
     void testForCheckingBookThatExistsInLibrary() {
         when(input.readInputString()).thenReturn("Harry Potter");
-        checkOutCommand = new CheckOutCommand();
-        checkOutCommand.perform(output, input, library);
-        Mockito.verify(library).checkOut("Harry Potter");
+        checkOutBookCommand = new CheckOutBookCommand();
+        checkOutBookCommand.perform(output, input, library);
+        Mockito.verify(library).checkOut(new Book("Harry Potter", null, 0));
     }
 
 }

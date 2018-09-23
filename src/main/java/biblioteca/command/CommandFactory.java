@@ -9,7 +9,7 @@ public class CommandFactory {
             return new ListBooksCommand();
         }
         if (choice.equalsIgnoreCase("Checkout Book")) {
-            return new CheckOutCommand();
+            return new CheckOutBookCommand();
         }
         if (choice.equalsIgnoreCase("Return Book")) {
             return new ReturnCommand();

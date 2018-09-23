@@ -23,10 +23,9 @@ public class Library {
         return requiredItems;
     }
 
-    public boolean checkOut(String checkOutBook) {
-        Book bookToBeCheckedOut = new Book(checkOutBook, null, 0);
+    public boolean checkOut(LibraryItem checkoutItem) {
         for (int var = 0; var < items.size(); var++) {
-            if (items.get(var).equals(bookToBeCheckedOut)) {
+            if (items.get(var).equals(checkoutItem)) {
                 checkedOutItems.add(items.get(var));
                 items.remove(items.get(var));
                 return true;
