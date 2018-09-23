@@ -17,6 +17,9 @@ public class CommandFactory {
         if (choice.equalsIgnoreCase("List of Movies")) {
             return new ListMoviesCommand();
         }
+        if (choice.equalsIgnoreCase("Check out Movie")) {
+            return new CheckOutMovieCommand();
+        }
         return new InvalidCommand();
     }
 }

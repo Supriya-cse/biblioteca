@@ -8,7 +8,7 @@ public class Movie implements LibraryItem {
     private final String rating;
     private final int yearReleased;
 
-    public Movie(String title, int yearReleased, String director, String rating) {
+    public Movie(String title, String director, int yearReleased, String rating) {
         this.title = title;
         this.yearReleased = yearReleased;
         this.director = director;

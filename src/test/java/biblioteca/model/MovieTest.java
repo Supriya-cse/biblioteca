@@ -8,7 +8,7 @@ class MovieTest {
     @Test
     void testForRepresentation() {
         String format = "%-35s %-35s %-10d %-10s";
-        Movie aMovie = new Movie("Hachiko", 2009, "Nick", "8");
+        Movie aMovie = new Movie("Hachiko", "Nick", 2009, "8");
         String title = "Hachiko";
         int yearReleased = 2009;
         String director = "Nick";
@@ -25,7 +25,7 @@ class MovieTest {
         int yearReleased = 1997;
         String director = "Nick";
         String rating = "9";
-        Movie movie = new Movie(title, yearReleased, director, rating);
+        Movie movie = new Movie(title, director, yearReleased, rating);
 
         assertFalse(movie.equals(null));
     }
@@ -36,7 +36,7 @@ class MovieTest {
         int yearReleased = 1997;
         String director = "Nick";
         String rating = "9";
-        Movie aMovie = new Movie(title, yearReleased, director, rating);
+        Movie aMovie = new Movie(title, director, yearReleased, rating);
         String movie = "movie";
 
         assertFalse(aMovie.equals(movie));
@@ -48,8 +48,8 @@ class MovieTest {
         int yearReleased = 1997;
         String director = "Nick";
         String rating = "9";
-        Movie aMovie = new Movie(title, yearReleased, director, rating);
-        Movie sameMovie = new Movie(title, yearReleased, director, rating);
+        Movie aMovie = new Movie(title, director, yearReleased, rating);
+        Movie sameMovie = new Movie(title, director, yearReleased, rating);
 
         assertTrue(aMovie.equals(sameMovie));
     }
