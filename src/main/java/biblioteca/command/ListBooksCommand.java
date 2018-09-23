@@ -1,9 +1,9 @@
 package biblioteca.command;
 
+import biblioteca.model.Book;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
-import biblioteca.model.Book;
 
 public class ListBooksCommand extends ListItems implements Command {
     private static final String HEADER = "Title\t\t\t\t\t\t\t\tAuthor\t\t\t\t\t\t\t\tYear\t";
