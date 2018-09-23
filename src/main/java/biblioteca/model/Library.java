@@ -1,33 +1,34 @@
 package biblioteca.model;
 
-//Place to find collection of books
+//Place to find collection of items
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private LibraryHelper libraryHelper = new LibraryHelper();
-    private List<Book> checkedOutBooks = new ArrayList<>();
-    private List<Book> books;
+    private List<LibraryItem> checkedOutItems = new ArrayList<>();
+    private List<LibraryItem> items;
 
-    public Library() {
-        this.books = libraryHelper.listOfLibraryItems();
+    public Library(List<LibraryItem> libraryItems) {
+        this.items = libraryItems;
     }
 
-    public List<String> getListOfBooks() {
-        List<String> bookDetails = new ArrayList<>();
-        for (Book book : books) {
-            bookDetails.add(book.toString());
+    public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
+        List<String> requiredItems = new ArrayList<>();
+        for (LibraryItem libraryItem : items) {
+            if(itemClass.equals(libraryItem.getClass())) {
+                requiredItems.add(libraryItem.toString());
+            }
         }
-        return bookDetails;
+        return requiredItems;
     }
 
     public boolean checkOut(String checkOutBook) {
         Book bookToBeCheckedOut = new Book(checkOutBook, null, 0);
-        for (int var = 0; var < books.size(); var++) {
-            if (books.get(var).equals(bookToBeCheckedOut)) {
-                checkedOutBooks.add(books.get(var));
-                books.remove(books.get(var));
+        for (int var = 0; var < items.size(); var++) {
+            if (items.get(var).equals(bookToBeCheckedOut)) {
+                checkedOutItems.add(items.get(var));
+                items.remove(items.get(var));
                 return true;
             }
         }
@@ -36,10 +37,10 @@ public class Library {
 
     public boolean returnBook(String returnBookDetails) {
         Book bookToBeReturned = new Book(returnBookDetails, null, 0);
-        for (int var = 0; var < checkedOutBooks.size(); var++) {
-            if (checkedOutBooks.get(var).equals(bookToBeReturned)) {
-                books.add(checkedOutBooks.get(var));
-                checkedOutBooks.remove(books.get(var));
+        for (int var = 0; var < checkedOutItems.size(); var++) {
+            if (checkedOutItems.get(var).equals(bookToBeReturned)) {
+                items.add(checkedOutItems.get(var));
+                checkedOutItems.remove(items.get(var));
                 return true;
             }
         }

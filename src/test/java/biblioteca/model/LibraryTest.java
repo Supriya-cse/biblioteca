@@ -7,82 +7,79 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class LibraryTest {
 
-    @DisplayName("Test for displaying list of books")
+
+    @DisplayName("Test for displaying list of items")
     @Test
-    void testForDisplayingListOfBooks() {
-        List<Book> expectedBookList = new ArrayList<>();
-        Library library = new Library();
+    void testForDisplayingListOfItems() {
+        List<LibraryItem> expectedBookList = new ArrayList<>();
+
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        Library library = new Library(libraryItems);
 
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
         expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
-        assertEquals(expectedBookList.get(0).toString(), library.getListOfBooks().get(0));
-
+        assertEquals(3,  library.getListOfLibraryItems(Book.class).size());
+        assertEquals(expectedBookList.get(0).toString(), library.getListOfLibraryItems(Book.class).get(0));
+        assertEquals(expectedBookList.get(1).toString(), library.getListOfLibraryItems(Book.class).get(1));
+        assertEquals(expectedBookList.get(2).toString(), library.getListOfLibraryItems(Book.class).get(2));
     }
-
-    @Test
-    void testForTwoBooksToBeEqual() {
-        Book book = new Book("Hobbit", "Daniel", 2000);
-        Book book2 = new Book("Hobbit", "Daniel", 2000);
-        assertEquals(book, book2);
-    }
-
-    @Test
-    void testForTwoBooksNotToBeEqual() {
-        Book book = new Book("Hobbit", "Daniel", 2000);
-        Book book2 = new Book("Hobb", "ho", 2000);
-        assertNotEquals(book, book2);
-    }
-
 
     @Test
     void testForCheckOut() {
         String checkOutBook = "Sherlock Homes";
-        List<Book> expectedBookList = new ArrayList<>();
-        Library library = new Library();
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        Library library = new Library(libraryItems);
 
-        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
-        expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
 
         library.checkOut(checkOutBook);
 
-        assertEquals(library.getListOfBooks().size(), expectedBookList.size());
+        assertEquals(library.getListOfLibraryItems(Book.class).size(), 2);
+        assertEquals(libraryItems.size(),4);
     }
 
     @Test
     void testForCheckOutOfTwoBooks() {
-        String checkOutBook = "Sherlock Homes";
-        String anotherBook = "Stephen Hawking";
-        List<Book> expectedBookList = new ArrayList<>();
-        Library library = new Library();
+        String checkOutBookTitle = "Sherlock Homes";
+        String anotherBookTitle = "Stephen Hawking";
 
-        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
-        library.checkOut(checkOutBook);
-        library.checkOut(anotherBook);
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        Library library = new Library(libraryItems);
 
-        assertEquals(library.getListOfBooks().size(), expectedBookList.size());
+        library.checkOut(checkOutBookTitle);
+        library.checkOut(anotherBookTitle);
+
+        assertEquals(library.getListOfLibraryItems(Book.class).size(), 1);
+        assertEquals(libraryItems.size(),3);
     }
 
     @Test
     void testForReturnABook() {
-        String checkOutBook = "Sherlock Homes";
-        List<Book> expectedBookList = new ArrayList<>();
-        Library library = new Library();
+        String checkOutBookTitle = "Sherlock Homes";
 
-        expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
-        expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
-        expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        Library library = new Library(libraryItems);
 
-        library.checkOut(checkOutBook);
-        library.returnBook(checkOutBook);
+        library.checkOut(checkOutBookTitle);
+        library.returnBook(checkOutBookTitle);
 
-        assertEquals(library.getListOfBooks().size(), expectedBookList.size());
+        assertEquals(library.getListOfLibraryItems(Book.class).size(),3);
+        assertEquals(libraryItems.size(),5);
     }
 
+
+    private List<LibraryItem> listOfLibraryItems() {
+        List<LibraryItem> libraryItems = new ArrayList<>();
+        libraryItems.add(new Book("Harry Potter", "JK rowling", 1997));
+        libraryItems.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        libraryItems.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
+        libraryItems.add(new Movie("Hachiko", 2009, "Nick", "8"));
+        libraryItems.add(new Movie("Kushi", 2010, "SjSurya", "10"));
+        return libraryItems;
+    }
 
 }

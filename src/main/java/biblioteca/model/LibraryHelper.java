@@ -5,13 +5,15 @@ import java.util.List;
 
 
 public class LibraryHelper {
-    private List<Book> listOfBooks = new ArrayList<>();
+    private List<LibraryItem> libraryItems = new ArrayList<>();
 
-    List<Book> listOfLibraryItems() {
-        listOfBooks.add(new Book("Harry Potter", "JK rowling", 1997));
-        listOfBooks.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
-        listOfBooks.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
-        return listOfBooks;
+    public List<LibraryItem> listOfLibraryItems() {
+        libraryItems.add(new Book("Harry Potter", "JK rowling", 1997));
+        libraryItems.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
+        libraryItems.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
+        libraryItems.add(new Movie("Hachiko", 2009, "Nick", "8"));
+        libraryItems.add(new Movie("Kushi", 2010, "SjSurya", "10"));
+        return libraryItems;
     }
 
 

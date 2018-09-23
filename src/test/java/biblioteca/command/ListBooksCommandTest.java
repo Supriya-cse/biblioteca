@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import biblioteca.model.Book;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ class ListBooksCommandTest {
         books.add(String.format(BOOK_REPRESENTATION_FORMAT, "HarryPotter", "Jk rowling", 1997));
         books.add(String.format(BOOK_REPRESENTATION_FORMAT, "Stephen Hawking", "Kristin Larsen", 1998));
         books.add(String.format(BOOK_REPRESENTATION_FORMAT, "Sherlock Homes", "Arthur Canon", 1996));
-        when(library.getListOfBooks()).thenReturn(books);
+        when(library.getListOfLibraryItems(Book.class)).thenReturn(books);
         listBooksCommand = new ListBooksCommand();
         listBooksCommand.perform(output, input, library);
     }
