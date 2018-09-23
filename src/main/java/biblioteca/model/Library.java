@@ -16,7 +16,7 @@ public class Library {
     public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
         List<String> requiredItems = new ArrayList<>();
         for (LibraryItem libraryItem : items) {
-            if(itemClass.equals(libraryItem.getClass())) {
+            if (itemClass.equals(libraryItem.getClass())) {
                 requiredItems.add(libraryItem.toString());
             }
         }

@@ -2,6 +2,7 @@ package biblioteca.common;
 
 public class Constants {
     public static final String BOOK_REPRESENTATION_FORMAT = "%-35s %-35s %-10d";
+    public static final String MOVIE_REPRESENTATION_FORMAT = "%-35s %-35s %-10s %-10s";
     public static final String MENU_HEADER = "Menu::";
     public static final String ENTER_YOUR_OPTION = "Enter your option::";
     public static final String WELCOME_MESSAGE = "Welcome to the Bangalore Library";

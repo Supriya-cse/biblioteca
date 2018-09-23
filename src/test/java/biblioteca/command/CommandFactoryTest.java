@@ -44,5 +44,10 @@ class CommandFactoryTest {
         assertEquals(command.getClass(), InvalidCommand.class);
     }
 
+    @Test
+    void testForListMoviesCommand() {
+        Command command = this.commandFactory.getCommand("list of movies");
+        assertEquals(command.getClass(), ListMoviesCommand.class);
+    }
 
 }

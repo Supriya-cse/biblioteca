@@ -23,7 +23,7 @@ class LibraryTest {
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
         expectedBookList.add(new Book("Sherlock Homes", "Arthur Canon", 1996));
 
-        assertEquals(3,  library.getListOfLibraryItems(Book.class).size());
+        assertEquals(3, library.getListOfLibraryItems(Book.class).size());
         assertEquals(expectedBookList.get(0).toString(), library.getListOfLibraryItems(Book.class).get(0));
         assertEquals(expectedBookList.get(1).toString(), library.getListOfLibraryItems(Book.class).get(1));
         assertEquals(expectedBookList.get(2).toString(), library.getListOfLibraryItems(Book.class).get(2));
@@ -39,7 +39,7 @@ class LibraryTest {
         library.checkOut(checkOutBook);
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 2);
-        assertEquals(libraryItems.size(),4);
+        assertEquals(libraryItems.size(), 4);
     }
 
     @Test
@@ -54,7 +54,7 @@ class LibraryTest {
         library.checkOut(anotherBookTitle);
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 1);
-        assertEquals(libraryItems.size(),3);
+        assertEquals(libraryItems.size(), 3);
     }
 
     @Test
@@ -67,8 +67,8 @@ class LibraryTest {
         library.checkOut(checkOutBookTitle);
         library.returnBook(checkOutBookTitle);
 
-        assertEquals(library.getListOfLibraryItems(Book.class).size(),3);
-        assertEquals(libraryItems.size(),5);
+        assertEquals(library.getListOfLibraryItems(Book.class).size(), 3);
+        assertEquals(libraryItems.size(), 5);
     }
 
 
