@@ -1,6 +1,6 @@
 package biblioteca.model;
 
-public class Movie {
+public class Movie implements LibraryItem {
     private static final String format = "%-35s %-35s %-10d %-10s";
 
     private final String title;

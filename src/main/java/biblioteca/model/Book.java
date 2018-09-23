@@ -2,7 +2,7 @@ package biblioteca.model;
 
 import static biblioteca.common.Constants.BOOK_REPRESENTATION_FORMAT;
 
-public class Book {
+public class Book implements LibraryItem {
     private String title;
     private String author;
     private int publishedYear;
