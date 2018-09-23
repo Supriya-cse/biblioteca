@@ -65,7 +65,7 @@ class LibraryTest {
         Library library = new Library(libraryItems);
 
         library.checkOut(new Book(checkOutBookTitle, null, 1000));
-        library.returnBook(checkOutBookTitle);
+        library.returnItem(new Book(checkOutBookTitle, null, 1000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 3);
         assertEquals(libraryItems.size(), 5);

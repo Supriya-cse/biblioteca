@@ -34,10 +34,9 @@ public class Library {
         return false;
     }
 
-    public boolean returnBook(String returnBookDetails) {
-        Book bookToBeReturned = new Book(returnBookDetails, null, 0);
+    public boolean returnItem(LibraryItem returnItem) {
         for (int var = 0; var < checkedOutItems.size(); var++) {
-            if (checkedOutItems.get(var).equals(bookToBeReturned)) {
+            if (checkedOutItems.get(var).equals(returnItem)) {
                 items.add(checkedOutItems.get(var));
                 checkedOutItems.remove(items.get(var));
                 return true;

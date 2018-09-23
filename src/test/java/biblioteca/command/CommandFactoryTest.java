@@ -29,7 +29,7 @@ class CommandFactoryTest {
     @Test
     void testForReturnBookCommand() {
         Command command = this.commandFactory.getCommand("return book");
-        assertEquals(command.getClass(), ReturnCommand.class);
+        assertEquals(command.getClass(), ReturnBookCommand.class);
     }
 
     @Test

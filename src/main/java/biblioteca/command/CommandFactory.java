@@ -12,13 +12,16 @@ public class CommandFactory {
             return new CheckOutBookCommand();
         }
         if (choice.equalsIgnoreCase("Return Book")) {
-            return new ReturnCommand();
+            return new ReturnBookCommand();
         }
         if (choice.equalsIgnoreCase("List of Movies")) {
             return new ListMoviesCommand();
         }
         if (choice.equalsIgnoreCase("Check out Movie")) {
             return new CheckOutMovieCommand();
+        }
+        if (choice.equalsIgnoreCase("Return Movie")) {
+            return new ReturnMovieCommand();
         }
         return new InvalidCommand();
     }

@@ -1,5 +1,6 @@
 package biblioteca.command;
 
+import biblioteca.model.Book;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -10,28 +11,29 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
-class ReturnCommandTest {
+class ReturnBookCommandTest {
 
     private ConsoleOutputDriver output;
     private InputDriver input;
     private Library library;
-    private ReturnCommand returnCommand;
+    private ReturnBookCommand returnBookCommand;
 
     @BeforeEach
     void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
         library = Mockito.mock(Library.class);
+
     }
 
-
-    @DisplayName("should return a book if it is already checked out")
+    @DisplayName("should checkout a book that is present in the book list of the library")
     @Test
-    void testForReturningBookThatIsCheckedOutAlready() {
+    void testForCheckingBookThatExistsInLibrary() {
         when(input.readInputString()).thenReturn("Harry Potter");
-        returnCommand = new ReturnCommand();
-        returnCommand.perform(output, input, library);
-        Mockito.verify(library).returnBook("Harry Potter");
+        returnBookCommand = new ReturnBookCommand();
+        returnBookCommand.perform(output, input, library);
+        Mockito.verify(library).returnItem(new Book("Harry Potter", null, 0));
     }
+
 
 }

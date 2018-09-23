@@ -14,6 +14,10 @@ public class Constants {
     public static final String BOOK_NOT_AVAILABLE = "Sorry! Book is not available";
     public static final String MOVIE_NOT_AVAILABLE = "Sorry! Movie is not available";
     public static final String ENTER__BOOK_NAME_TO_RETURN = "Enter Book title to return the book";
+    public static final String ENTER__MOVIE_NAME_TO_RETURN = "Enter Movie title to return the book";
     public static final String RETURN_SUCCESSFUL = "Thank you for returning the book";
     public static final String RETURN_UNSUCCESSFUL = "That is not a valid book to return";
+    public static final String RETURN_MOVIE_UNSUCCESSFUL = "That is not a valid movie to return";
+    public static final String RETURN_MOVIE_SUCCESSFUL = "Thank you for returning the movie";
+
 }
