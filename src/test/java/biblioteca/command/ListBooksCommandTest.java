@@ -1,4 +1,5 @@
 package biblioteca.command;
+
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -20,20 +21,20 @@ class ListBooksCommandTest {
     private ListBooksCommand listBooksCommand;
 
     @BeforeEach
-    void init(){
+    void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
         library = Mockito.mock(Library.class);
-        ArrayList<String> books=new ArrayList<>();
-        books.add(String.format(BOOK_REPRESENTATION_FORMAT,"HarryPotter","Jk rowling",1997));
-        books.add(String.format(BOOK_REPRESENTATION_FORMAT,"Stephen Hawking", "Kristin Larsen",1998));
-        books.add(String.format(BOOK_REPRESENTATION_FORMAT,"Sherlock Homes","Arthur Canon",1996));
+        ArrayList<String> books = new ArrayList<>();
+        books.add(String.format(BOOK_REPRESENTATION_FORMAT, "HarryPotter", "Jk rowling", 1997));
+        books.add(String.format(BOOK_REPRESENTATION_FORMAT, "Stephen Hawking", "Kristin Larsen", 1998));
+        books.add(String.format(BOOK_REPRESENTATION_FORMAT, "Sherlock Homes", "Arthur Canon", 1996));
         when(library.getListOfBooks()).thenReturn(books);
         listBooksCommand = new ListBooksCommand();
-        listBooksCommand.perform(output,input,library);
+        listBooksCommand.perform(output, input, library);
     }
 
-    @DisplayName("should display header for list of books" )
+    @DisplayName("should display header for list of books")
     @Test
     void testForHeaderOfListOfBooks() {
         Mockito.verify(output).print("Title\t\t\t\t\t\t\t\tAuthor\t\t\t\t\t\t\t\tYear\t");
@@ -42,11 +43,11 @@ class ListBooksCommandTest {
 
     @DisplayName("Should display no books available if there are no books in library")
     @Test
-    void testForDisplayingBooksAvailable(){
+    void testForDisplayingBooksAvailable() {
 
-         Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT,"HarryPotter","Jk rowling",1997));
-         Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT,"Stephen Hawking", "Kristin Larsen",1998));
-         Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT,"Sherlock Homes","Arthur Canon",1996));
+        Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT, "HarryPotter", "Jk rowling", 1997));
+        Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT, "Stephen Hawking", "Kristin Larsen", 1998));
+        Mockito.verify(output).print(String.format(BOOK_REPRESENTATION_FORMAT, "Sherlock Homes", "Arthur Canon", 1996));
     }
 
 }

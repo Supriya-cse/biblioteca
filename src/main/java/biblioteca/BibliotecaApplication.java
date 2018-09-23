@@ -11,9 +11,9 @@ public class BibliotecaApplication {
     public static void main(String args[]) {
         Library library = new Library();
         ConsoleOutputDriver consoleOutputDriver = new ConsoleOutputDriver();
-        InputDriver inputDriver=new InputDriver();
-        CommandFactory commandFactory=new CommandFactory();
-        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver,inputDriver,library,commandFactory);
+        InputDriver inputDriver = new InputDriver();
+        CommandFactory commandFactory = new CommandFactory();
+        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver, inputDriver, library, commandFactory);
         libraryManagementSystem.start();
     }
 

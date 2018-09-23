@@ -10,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class LibraryManagementSystemTest {
 
@@ -62,8 +60,8 @@ class LibraryManagementSystemTest {
         when(commandFactory.getCommand(any())).thenReturn(aCommand).thenReturn(anotherCommand);
         libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver, inputDriver, library, commandFactory);
         libraryManagementSystem.start();
-        Mockito.verify(aCommand).perform(consoleOutputDriver,inputDriver,library);
-        Mockito.verify(anotherCommand).perform(consoleOutputDriver,inputDriver,library);
+        Mockito.verify(aCommand).perform(consoleOutputDriver, inputDriver, library);
+        Mockito.verify(anotherCommand).perform(consoleOutputDriver, inputDriver, library);
     }
 
 }

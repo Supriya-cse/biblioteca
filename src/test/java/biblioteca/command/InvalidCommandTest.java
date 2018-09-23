@@ -1,5 +1,5 @@
 package biblioteca.command;
-import biblioteca.command.InvalidCommand;
+
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
- class InvalidCommandTest {
+class InvalidCommandTest {
 
     private ConsoleOutputDriver output;
     private InvalidCommand invalidCommand;
@@ -17,7 +17,7 @@ import org.mockito.Mockito;
 
     @BeforeEach
     void init() {
-        invalidCommand=new InvalidCommand();
+        invalidCommand = new InvalidCommand();
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
         library = Mockito.mock(Library.class);
@@ -25,9 +25,9 @@ import org.mockito.Mockito;
 
     @DisplayName("should display select valid option when invalid command is given")
     @Test
-    void testForInvalidOption(){
+    void testForInvalidOption() {
         String selectValidOption = "Select a valid option!";
-        invalidCommand.perform(output,input,library);
+        invalidCommand.perform(output, input, library);
         Mockito.verify(output).print(selectValidOption);
     }
 

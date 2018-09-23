@@ -18,7 +18,7 @@ class ReturnCommandTest {
     private ReturnCommand returnCommand;
 
     @BeforeEach
-    void init(){
+    void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
         library = Mockito.mock(Library.class);
@@ -27,10 +27,10 @@ class ReturnCommandTest {
 
     @DisplayName("should return a book if it is already checked out")
     @Test
-    void testForReturningBookThatIsCheckedOutAlready(){
+    void testForReturningBookThatIsCheckedOutAlready() {
         when(input.readInputString()).thenReturn("Harry Potter");
         returnCommand = new ReturnCommand();
-        returnCommand.perform(output,input,library);
+        returnCommand.perform(output, input, library);
         Mockito.verify(library).returnBook("Harry Potter");
     }
 

@@ -53,12 +53,11 @@ public class LibraryManagementSystem {
             option = readMenuOptionFromUser();
             Command command = commandBasedOnUserChoice(option);
             command.perform(outputDriver, inputDriver, library);
-
         } while (option != 0);
     }
 
     private Command commandBasedOnUserChoice(int option) {
-        if(option<options.length) {
+        if (option < options.length) {
             String choice = options[option];
             return this.commandFactory.getCommand(choice);
         }

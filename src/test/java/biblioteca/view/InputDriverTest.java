@@ -13,21 +13,21 @@ public class InputDriverTest {
     }
 
     @Test
-    void testMainMenuInput(){
+    void testMainMenuInput() {
         setSystemInput("0\n");
         InputDriver inputDriver = new InputDriver();
-        assertEquals(0,inputDriver.readInput());
+        assertEquals(0, inputDriver.readInput());
     }
 
     @Test
-    void testMainMenuInputAsString(){
+    void testMainMenuInputAsString() {
         setSystemInput("hello\n");
         InputDriver inputDriver = new InputDriver();
-        assertEquals("hello",inputDriver.readInputString());
+        assertEquals("hello", inputDriver.readInputString());
     }
 
     @AfterEach
-    private void setUp(){
+    private void setUp() {
         System.setIn(System.in);
     }
 

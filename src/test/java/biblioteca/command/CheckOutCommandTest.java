@@ -8,9 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.ArrayList;
-
-import static biblioteca.common.Constants.BOOK_REPRESENTATION_FORMAT;
 import static org.mockito.Mockito.when;
 
 class CheckOutCommandTest {
@@ -22,7 +19,7 @@ class CheckOutCommandTest {
     private CheckOutCommand checkOutCommand;
 
     @BeforeEach
-    void init(){
+    void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
         library = Mockito.mock(Library.class);
@@ -31,10 +28,10 @@ class CheckOutCommandTest {
 
     @DisplayName("should checkout a book that is present in the book list of the library")
     @Test
-    void testForCheckingBookThatExistsInLibrary(){
+    void testForCheckingBookThatExistsInLibrary() {
         when(input.readInputString()).thenReturn("Harry Potter");
         checkOutCommand = new CheckOutCommand();
-        checkOutCommand.perform(output,input,library);
+        checkOutCommand.perform(output, input, library);
         Mockito.verify(library).checkOut("Harry Potter");
     }
 
