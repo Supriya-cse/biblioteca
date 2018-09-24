@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LibraryTest {
 
@@ -17,7 +18,8 @@ class LibraryTest {
         List<LibraryItem> expectedBookList = new ArrayList<>();
 
         List<LibraryItem> libraryItems = listOfLibraryItems();
-        Library library = new Library(libraryItems);
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
 
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
@@ -33,10 +35,11 @@ class LibraryTest {
     void testForCheckOut() {
         String checkOutBook = "Sherlock Homes";
         List<LibraryItem> libraryItems = listOfLibraryItems();
-        Library library = new Library(libraryItems);
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
 
 
-        library.checkOut(new Book(checkOutBook, null, 1000));
+        library.checkOutItem(new Book(checkOutBook, null, 1000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 2);
         assertEquals(libraryItems.size(), 4);
@@ -48,10 +51,11 @@ class LibraryTest {
         String anotherBookTitle = "Stephen Hawking";
 
         List<LibraryItem> libraryItems = listOfLibraryItems();
-        Library library = new Library(libraryItems);
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
 
-        library.checkOut(new Book(checkOutBookTitle, null, 1000));
-        library.checkOut(new Book(anotherBookTitle, null, 2000));
+        library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
+        library.checkOutItem(new Book(anotherBookTitle, null, 2000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 1);
         assertEquals(libraryItems.size(), 3);
@@ -62,13 +66,24 @@ class LibraryTest {
         String checkOutBookTitle = "Sherlock Homes";
 
         List<LibraryItem> libraryItems = listOfLibraryItems();
-        Library library = new Library(libraryItems);
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
 
-        library.checkOut(new Book(checkOutBookTitle, null, 1000));
+        library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
         library.returnItem(new Book(checkOutBookTitle, null, 1000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 3);
         assertEquals(libraryItems.size(), 5);
+    }
+
+    @DisplayName("should return true for authenticating valid users ")
+    @Test
+    void testForAuthenticatingValidUsers() {
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
+
+        assertTrue(library.authenticate("222-3232", "supriya7"));
     }
 
 
@@ -81,5 +96,14 @@ class LibraryTest {
         libraryItems.add(new Movie("Kushi", "SjSurya", 2010, "10"));
         return libraryItems;
     }
+
+    private List<User> listOfUser() {
+        List<User> users = new ArrayList<>();
+        users.add(new User("Supriya", "222-3232", "supriya7", "supriya.muppiri@gmail.com", "9490887155"));
+        users.add(new User("Sunil", "222-3231", "sunilyedla7", "sunil.yedla@gmail.com", "9492607232"));
+        users.add(new User("Daya", "222-3233", "dayagaru7", "daya.mani@gmail.com", "99088754251"));
+        return users;
+    }
+
 
 }

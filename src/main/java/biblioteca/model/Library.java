@@ -8,9 +8,13 @@ import java.util.List;
 public class Library {
     private List<LibraryItem> checkedOutItems = new ArrayList<>();
     private List<LibraryItem> items;
+    private List<User> users;
+    private User currentUser;
 
-    public Library(List<LibraryItem> libraryItems) {
+    public Library(List<LibraryItem> libraryItems,List<User> users) {
         this.items = libraryItems;
+        this.users=users;
+        this.currentUser=null;
     }
 
     public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
@@ -23,7 +27,25 @@ public class Library {
         return requiredItems;
     }
 
-    public boolean checkOut(LibraryItem checkoutItem) {
+    public boolean authenticate(String libraryNo, String password){
+        for (int var = 0; var < users.size(); var++) {
+            if (users.get(var).checkCredentials(libraryNo, password)) {
+                currentUser = users.get(var);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isLogged(){
+        if(currentUser==null){
+            return false;
+        }
+        return true;
+    }
+
+
+    public boolean checkOutItem(LibraryItem checkoutItem) {
         for (int var = 0; var < items.size(); var++) {
             if (items.get(var).equals(checkoutItem)) {
                 checkedOutItems.add(items.get(var));

@@ -1,6 +1,6 @@
 package biblioteca;
 
-import biblioteca.command.CommandFactory;
+import biblioteca.command.CommandHelper;
 import biblioteca.controller.LibraryManagementSystem;
 import biblioteca.model.Library;
 import biblioteca.model.LibraryHelper;
@@ -11,11 +11,11 @@ public class BibliotecaApplication {
 
     public static void main(String args[]) {
         LibraryHelper libraryHelper = new LibraryHelper();
-        Library library = new Library(libraryHelper.listOfLibraryItems());
+        Library library = new Library(libraryHelper.listOfLibraryItems(),libraryHelper.listOfUser());
         ConsoleOutputDriver consoleOutputDriver = new ConsoleOutputDriver();
         InputDriver inputDriver = new InputDriver();
-        CommandFactory commandFactory = new CommandFactory();
-        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver, inputDriver, library, commandFactory);
+        CommandHelper commandHelper = new CommandHelper();
+        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(consoleOutputDriver, inputDriver, library, commandHelper);
         libraryManagementSystem.start();
     }
 

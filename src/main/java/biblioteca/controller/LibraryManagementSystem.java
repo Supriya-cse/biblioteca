@@ -1,29 +1,27 @@
 package biblioteca.controller;
 
 import biblioteca.command.Command;
-import biblioteca.command.CommandFactory;
+import biblioteca.command.CommandHelper;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
-
 import static biblioteca.common.Constants.*;
 
 
 public class LibraryManagementSystem {
-
-    private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book", "List of Movies", "Check out Movie"};
+    private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
+            "List of Movies", "Check out Movie","Login"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;
-    private CommandFactory commandFactory;
+    private CommandHelper commandHelper;
 
-    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library, CommandFactory commandFactory) {
+    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library, CommandHelper commandHelper) {
         this.outputDriver = libraryConsoleOutputDriver;
         this.library = library;
         this.inputDriver = inputDriver;
-        this.commandFactory = commandFactory;
+        this.commandHelper = commandHelper;
     }
-
 
     public void start() {
         message();
@@ -59,9 +57,9 @@ public class LibraryManagementSystem {
     private Command commandBasedOnUserChoice(int option) {
         if (option < options.length) {
             String choice = options[option];
-            return this.commandFactory.getCommand(choice);
+            return this.commandHelper.getCommand(choice);
         }
-        return this.commandFactory.getCommand("Invalid command");
+        return this.commandHelper.getCommand("Invalid command");
     }
 
     private void displayMenu() {
@@ -72,6 +70,4 @@ public class LibraryManagementSystem {
             i++;
         }
     }
-
-
 }

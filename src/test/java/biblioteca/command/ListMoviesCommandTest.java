@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static biblioteca.common.Constants.MOVIE_REPRESENTATION_FORMAT;
 import static org.mockito.Mockito.when;
 
-public class ListMoviesCommandTest {
+class ListMoviesCommandTest {
     private ConsoleOutputDriver output;
     private InputDriver input;
     private Library library;
@@ -43,7 +43,6 @@ public class ListMoviesCommandTest {
     @DisplayName("Should display no books available if there are no books in library")
     @Test
     void testForDisplayingBooksAvailable() {
-
         Mockito.verify(output).print(String.format(MOVIE_REPRESENTATION_FORMAT, "Kushi", "sj suriya", 1997, 9));
         Mockito.verify(output).print(String.format(MOVIE_REPRESENTATION_FORMAT, "Steve", "Larsen", 1998, 8));
     }

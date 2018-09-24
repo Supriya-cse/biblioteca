@@ -1,15 +1,13 @@
 package biblioteca.model;
 
 public class User {
-    private static final String REPRESENTATION_FORMAT = "%-35s %-35s %-35s";
-
     private final String name;
     private final String libraryNo;
     private final String password;
     private final String email;
     private final String phoneNumber;
 
-    public User(String name, String libraryNo, String password, String email, String phoneNumber) {
+    User(String name, String libraryNo, String password, String email, String phoneNumber) {
         this.name = name;
         this.libraryNo = libraryNo;
         this.password = password;
@@ -17,5 +15,26 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public boolean checkCredentials(String libraryNo, String password) {
+        return this.libraryNo.equals(libraryNo) && this.password.equals(password);
+    }
+
+    public boolean canLogin(){ return true; }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        User that = (User) other;
+        return this.name.equals(that.name) &&
+                this.libraryNo.equals(that.libraryNo) &&
+                this.password.equals(that.password) &&
+                this.email.equals(that.email) &&
+                this.phoneNumber.equals(that.phoneNumber);
+    }
 
 }

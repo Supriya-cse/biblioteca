@@ -1,6 +1,6 @@
 package biblioteca.command;
 
-public class CommandFactory {
+public class CommandHelper {
     public Command getCommand(String choice) {
         if (choice.equalsIgnoreCase("Quit Application")) {
             return new QuitCommand();
@@ -22,6 +22,9 @@ public class CommandFactory {
         }
         if (choice.equalsIgnoreCase("Return Movie")) {
             return new ReturnMovieCommand();
+        }
+        if (choice.equalsIgnoreCase("Login")) {
+            return new LoginCommand();
         }
         return new InvalidCommand();
     }

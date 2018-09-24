@@ -2,6 +2,7 @@ package biblioteca.command;
 
 import biblioteca.model.Book;
 import biblioteca.model.Library;
+import biblioteca.model.LibraryHelper;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 class ReturnBookCommandTest {
@@ -17,23 +20,35 @@ class ReturnBookCommandTest {
     private InputDriver input;
     private Library library;
     private ReturnBookCommand returnBookCommand;
+    private LibraryHelper libraryHelper;
 
     @BeforeEach
     void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
-        library = Mockito.mock(Library.class);
+        libraryHelper = new LibraryHelper();
+        library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser());
+        library.authenticate("222-3232", "supriya7");
 
     }
 
-    @DisplayName("should checkout a book that is present in the book list of the library")
+    @DisplayName("should return a book that is present in the checkedout list of the library")
     @Test
-    void testForCheckingBookThatExistsInLibrary() {
+    void testForReturningBookThatIsCheckedOut() {
+        when(input.readInputString()).thenReturn("Harry Potter");
+        library.checkOutItem(new Book("Harry Potter", null, 0));
+        returnBookCommand = new ReturnBookCommand();
+        returnBookCommand.perform(output, input, library);
+        assertTrue(library.returnItem(new Book("Harry Potter", null, 0)));
+    }
+
+
+    @DisplayName("should return a book that is present in the checkedout list of the library")
+    @Test
+    void testForNotReturningBookThatIsNotCheckedOut() {
         when(input.readInputString()).thenReturn("Harry Potter");
         returnBookCommand = new ReturnBookCommand();
         returnBookCommand.perform(output, input, library);
-        Mockito.verify(library).returnItem(new Book("Harry Potter", null, 0));
+        assertFalse(library.returnItem(new Book("Harry Potter", null, 0)));
     }
-
-
 }
