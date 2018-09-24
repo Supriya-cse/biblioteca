@@ -21,9 +21,8 @@ public class Constants {
     public static final String RETURN_MOVIE_SUCCESSFUL = "Thank you for returning the movie";
     public static final String ENTER_LIBRARY_NUMBER = "Enter library number:: ";
     public static final String ENTER_PASSWORD = "Enter password:: ";
-    public static final String LOGIN = "Login::";
     public static final String LOGIN_SUCCESSFUL = "Login Successful";
-    public static final String LOGIN_UNSUCCESSFUL = "Sorry Invalid Login";
+    public static final String LOGIN_UNSUCCESSFUL = "Sorry!Invalid Login";
     public static final String NOT_LOGGED = "Sorry!You are not logged in";
 
 }

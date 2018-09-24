@@ -8,6 +8,7 @@ import biblioteca.view.InputDriver;
 
 import static biblioteca.common.Constants.*;
 
+//Controls all operations on particular Library
 
 public class LibraryManagementSystem {
     private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
@@ -47,8 +48,8 @@ public class LibraryManagementSystem {
 
     private void menuSelection() {
         int option;
-        displayMenu();
         do {
+            displayMenu();
             option = readMenuOptionFromUser();
             Command command = commandBasedOnUserChoice(option);
             command.perform(outputDriver, inputDriver, library);
