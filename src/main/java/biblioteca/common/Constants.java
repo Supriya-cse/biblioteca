@@ -24,5 +24,7 @@ public class Constants {
     public static final String LOGIN_SUCCESSFUL = "Login Successful";
     public static final String LOGIN_UNSUCCESSFUL = "Sorry!Invalid Login";
     public static final String NOT_LOGGED = "Sorry!You are not logged in";
+    public static final String SUCCESFUL_LOGOUT = "You have logged out successfully";
+    public static final String UNSUCCESFUL_LOGOUT = "You have logged out successfully";
 
 }

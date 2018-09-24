@@ -8,14 +8,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static biblioteca.common.Constants.LOGIN_UNSUCCESSFUL;
+import static biblioteca.common.Constants.*;
 import static org.mockito.Mockito.when;
 
-class LoginCommandTest {
+public class LogOutCommandTest {
 
     private ConsoleOutputDriver output;
     private InputDriver input;
     private Library library;
+    private LogOutCommand logOutCommand;
     private LoginCommand loginCommand;
 
     @BeforeEach
@@ -28,21 +29,21 @@ class LoginCommandTest {
 
     @DisplayName("should login successfully if user had valid credentials")
     @Test
-    void testForSuccessfulLogin() {
+    void testForSuccessfulLogout() {
         when(input.readInputString()).thenReturn("222-3232").thenReturn("supriya7");
         loginCommand = new LoginCommand();
         loginCommand.perform(output, input, library);
-        Mockito.verify(library).authenticate("222-3232", "supriya7");
+        logOutCommand = new LogOutCommand();
+        logOutCommand.perform(output, input, library);
+        Mockito.verify(output).print(SUCCESFUL_LOGOUT);
     }
 
     @DisplayName("should not login if user didn't valid credentials")
     @Test
-    void testForUnSuccessfulLogin() {
+    void testForUnSuccessfulLogout() {
         when(input.readInputString()).thenReturn("221-3292").thenReturn("supriya7");
-        loginCommand = new LoginCommand();
-        loginCommand.perform(output, input, library);
-        Mockito.verify(output).print(LOGIN_UNSUCCESSFUL);
+        logOutCommand = new LogOutCommand();
+        logOutCommand.perform(output, input, library);
+        Mockito.verify(output).print(UNSUCCESFUL_LOGOUT);
     }
-
-
 }

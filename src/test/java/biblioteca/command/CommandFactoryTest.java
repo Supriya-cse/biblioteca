@@ -5,48 +5,48 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CommandHelperTest {
-    private CommandHelper commandHelper;
+class CommandFactoryTest {
+    private CommandFactory commandFactory;
 
     @BeforeEach
     void setUp() {
-        commandHelper = new CommandHelper();
+        commandFactory = new CommandFactory();
     }
 
     @Test
     void testForQuitCommand() {
-        Command command = this.commandHelper.getCommand("quit application");
+        Command command = this.commandFactory.getCommand("quit application");
         assertEquals(command.getClass(), QuitCommand.class);
     }
 
 
     @Test
     void testForListOfBooksCommand() {
-        Command command = this.commandHelper.getCommand("list of books");
+        Command command = this.commandFactory.getCommand("list of books");
         assertEquals(command.getClass(), ListBooksCommand.class);
     }
 
     @Test
     void testForReturnBookCommand() {
-        Command command = this.commandHelper.getCommand("return book");
+        Command command = this.commandFactory.getCommand("return book");
         assertEquals(command.getClass(), ReturnBookCommand.class);
     }
 
     @Test
     void testForCheckoutCommand() {
-        Command command = this.commandHelper.getCommand("checkout book");
+        Command command = this.commandFactory.getCommand("checkout book");
         assertEquals(command.getClass(), CheckOutBookCommand.class);
     }
 
     @Test
     void testForInvalidCommand() {
-        Command command = this.commandHelper.getCommand("");
+        Command command = this.commandFactory.getCommand("");
         assertEquals(command.getClass(), InvalidCommand.class);
     }
 
     @Test
     void testForListMoviesCommand() {
-        Command command = this.commandHelper.getCommand("list of movies");
+        Command command = this.commandFactory.getCommand("list of movies");
         assertEquals(command.getClass(), ListMoviesCommand.class);
     }
 

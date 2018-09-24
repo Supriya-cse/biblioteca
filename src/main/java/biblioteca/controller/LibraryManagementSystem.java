@@ -1,7 +1,7 @@
 package biblioteca.controller;
 
 import biblioteca.command.Command;
-import biblioteca.command.CommandHelper;
+import biblioteca.command.CommandFactory;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
@@ -9,20 +9,19 @@ import biblioteca.view.InputDriver;
 import static biblioteca.common.Constants.*;
 
 //Controls all operations on particular Library
-
 public class LibraryManagementSystem {
     private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
-            "List of Movies", "Check out Movie", "Login", "Display User Information"};
+                                       "List of Movies", "Check out Movie", "Login", "Display User Information","Logout"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;
-    private CommandHelper commandHelper;
+    private CommandFactory commandFactory;
 
-    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library, CommandHelper commandHelper) {
+    public LibraryManagementSystem(ConsoleOutputDriver libraryConsoleOutputDriver, InputDriver inputDriver, Library library, CommandFactory commandFactory) {
         this.outputDriver = libraryConsoleOutputDriver;
         this.library = library;
         this.inputDriver = inputDriver;
-        this.commandHelper = commandHelper;
+        this.commandFactory = commandFactory;
     }
 
     public void start() {
@@ -59,9 +58,9 @@ public class LibraryManagementSystem {
     private Command commandBasedOnUserChoice(int option) {
         if (option < options.length) {
             String choice = options[option];
-            return this.commandHelper.getCommand(choice);
+            return this.commandFactory.getCommand(choice);
         }
-        return this.commandHelper.getCommand("Invalid command");
+        return this.commandFactory.getCommand("Invalid command");
     }
 
     private void displayMenu() {

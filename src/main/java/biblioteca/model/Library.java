@@ -46,6 +46,14 @@ public class Library {
         return NOT_LOGGED;
     }
 
+    public boolean logout(){
+        if(isCurrentUserLogged()){
+            currentUser=null;
+            return true;
+        }
+        return false;
+    }
+
     public boolean isCurrentUserLogged() {
         return currentUser != null;
     }

@@ -47,4 +47,13 @@ class CheckOutBookCommandTest {
         Mockito.verify(output).print(BOOK_NOT_AVAILABLE);
     }
 
+    @DisplayName("should display success message after checking out successfully")
+    @Test
+    void testForDisplayingSuccessfulCheckout(){
+        when(input.readInputString()).thenReturn("Harry Potter");
+        checkOutBookCommand = new CheckOutBookCommand();
+        checkOutBookCommand.perform(output, input, library);
+        Mockito.verify(output).print(SUCCESSFUL_CHECKOUT);
+    }
+
 }
