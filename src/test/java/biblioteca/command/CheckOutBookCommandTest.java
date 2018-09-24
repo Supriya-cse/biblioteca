@@ -19,13 +19,12 @@ class CheckOutBookCommandTest {
     private InputDriver input;
     private Library library;
     private CheckOutBookCommand checkOutBookCommand;
-    private LibraryHelper libraryHelper;
 
     @BeforeEach
     void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
-        libraryHelper = new LibraryHelper();
+        LibraryHelper libraryHelper = new LibraryHelper();
         library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser());
         library.authenticate("222-3232", "supriya7");
     }
@@ -47,4 +46,5 @@ class CheckOutBookCommandTest {
         checkOutBookCommand.perform(output, input, library);
         Mockito.verify(output).print(BOOK_NOT_AVAILABLE);
     }
+
 }

@@ -7,8 +7,10 @@ import biblioteca.view.InputDriver;
 
 import static biblioteca.common.Constants.*;
 
+//Command to checkout movie from the library
 public class CheckOutMovieCommand implements Command {
 
+    @Override
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
         if (library.isCurrentUserLogged()) {
             output.print(ENTER_MOVIE_NAME_TO_CHECK_OUT);

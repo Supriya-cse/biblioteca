@@ -7,9 +7,9 @@ import biblioteca.view.InputDriver;
 
 import static biblioteca.common.Constants.*;
 
+//Command to checkoutBook from library
 public class CheckOutBookCommand implements Command {
-
-
+    @Override
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
         if (library.isCurrentUserLogged()) {
             output.print(ENTER_BOOK_NAME_TO_CHECK_OUT);

@@ -6,6 +6,7 @@ import biblioteca.view.InputDriver;
 
 import static biblioteca.common.Constants.*;
 
+//Command to login in to Biblioteca Application
 public class LoginCommand implements Command {
     @Override
     public void perform(ConsoleOutputDriver outputDriver, InputDriver inputDriver, Library library) {
@@ -20,5 +21,4 @@ public class LoginCommand implements Command {
             outputDriver.print(LOGIN_SUCCESSFUL);
         }
     }
-
 }
