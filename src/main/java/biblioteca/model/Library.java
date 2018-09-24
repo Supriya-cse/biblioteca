@@ -10,11 +10,13 @@ public class Library {
     private List<LibraryItem> items;
     private List<User> users;
     private User currentUser;
+    private CheckoutListener librarian;
 
-    public Library(List<LibraryItem> libraryItems, List<User> users) {
+    public Library(List<LibraryItem> libraryItems, List<User> users, CheckoutListener librarian) {
         this.items = libraryItems;
         this.users = users;
         this.currentUser = null;
+        this.librarian = librarian;
     }
 
     public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
@@ -50,6 +52,7 @@ public class Library {
             if (items.get(var).equals(checkoutItem)) {
                 checkedOutItems.add(items.get(var));
                 items.remove(items.get(var));
+                librarian.inform();
                 return true;
             }
         }

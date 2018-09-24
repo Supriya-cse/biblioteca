@@ -1,5 +1,5 @@
 package biblioteca.model;
 
-public interface Librarian {
+public interface CheckoutListener {
     public void inform();
 }

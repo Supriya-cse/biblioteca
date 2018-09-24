@@ -1,7 +1,9 @@
 package biblioteca.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +12,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LibraryTest {
+    private CheckoutListener librarian;
+    private List<LibraryItem> libraryItems;
+    private List<User> users;
+    private Library library;
 
+    @BeforeEach
+    void init() {
+        librarian = Mockito.mock(CheckoutListener.class);
+        libraryItems = listOfLibraryItems();
+        users = listOfUser();
+        library = new Library(libraryItems, users, librarian);
+    }
 
     @DisplayName("Test for displaying list of items")
     @Test
     void testForDisplayingListOfItems() {
         List<LibraryItem> expectedBookList = new ArrayList<>();
-
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
 
         expectedBookList.add(new Book("Harry Potter", "JK rowling", 1997));
         expectedBookList.add(new Book("Stephen Hawking", "Kristin Larsen", 1998));
@@ -34,11 +43,7 @@ class LibraryTest {
     @Test
     void testForCheckOut() {
         String checkOutBook = "Sherlock Homes";
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
-
-
+        library.authenticate("222-3232", "supriya7");
         library.checkOutItem(new Book(checkOutBook, null, 1000));
 
         assertEquals(library.getListOfLibraryItems(Book.class).size(), 2);
@@ -49,11 +54,7 @@ class LibraryTest {
     void testForCheckOutOfTwoBooks() {
         String checkOutBookTitle = "Sherlock Homes";
         String anotherBookTitle = "Stephen Hawking";
-
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
-
+        library.authenticate("222-3232", "supriya7");
         library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
         library.checkOutItem(new Book(anotherBookTitle, null, 2000));
 
@@ -64,11 +65,7 @@ class LibraryTest {
     @Test
     void testForReturnABook() {
         String checkOutBookTitle = "Sherlock Homes";
-
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
-
+        library.authenticate("222-3232", "supriya7");
         library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
         library.returnItem(new Book(checkOutBookTitle, null, 1000));
 
@@ -79,9 +76,6 @@ class LibraryTest {
     @DisplayName("should return true for authenticating valid users ")
     @Test
     void testForAuthenticatingValidUsers() {
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
 
         assertTrue(library.authenticate("222-3232", "supriya7"));
     }
@@ -89,13 +83,21 @@ class LibraryTest {
     @DisplayName("should return true if current user is logged in ")
     @Test
     void testForIsLoggedUsers() {
-        List<LibraryItem> libraryItems = listOfLibraryItems();
-        List<User> users = listOfUser();
-        Library library = new Library(libraryItems, users);
-
         library.authenticate("222-3232", "supriya7");
         assertTrue(library.isLogged());
     }
+
+    @DisplayName("should inform librarian when user checks out book")
+    @Test
+    void testForInformingLibrarianWhenABookIsCheckedOut() {
+        String checkOutBookTitle = "Sherlock Homes";
+
+        library.authenticate("222-3232", "supriya7");
+        library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
+        Mockito.verify(librarian).inform();
+
+    }
+
 
     private List<LibraryItem> listOfLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();
