@@ -11,7 +11,7 @@ public class CheckOutBookCommand implements Command {
 
 
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
-        if (library.isLogged()) {
+        if (library.isCurrentUserLogged()) {
             output.print(ENTER_BOOK_NAME_TO_CHECK_OUT);
             String inputString = input.readInputString();
             Book bookToCheckout = new Book(inputString, null, 1);

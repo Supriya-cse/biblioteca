@@ -11,7 +11,7 @@ import static biblioteca.common.Constants.*;
 public class ReturnMovieCommand implements Command {
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
 
-        if (library.isLogged()) {
+        if (library.isCurrentUserLogged()) {
             output.print(ENTER__MOVIE_NAME_TO_RETURN);
             String inputString = input.readInputString();
             Movie movieToCheckout = new Movie(inputString, null, 1000, "10");

@@ -1,7 +1,6 @@
 package biblioteca.command;
 
 import biblioteca.model.Book;
-import biblioteca.model.CheckoutListener;
 import biblioteca.model.Library;
 import biblioteca.model.LibraryHelper;
 import biblioteca.view.ConsoleOutputDriver;
@@ -22,15 +21,14 @@ class ReturnBookCommandTest {
     private Library library;
     private ReturnBookCommand returnBookCommand;
     private LibraryHelper libraryHelper;
-    private CheckoutListener librarian;
+
 
     @BeforeEach
     void init() {
         output = Mockito.mock(ConsoleOutputDriver.class);
         input = Mockito.mock(InputDriver.class);
-        librarian = Mockito.mock(CheckoutListener.class);
         libraryHelper = new LibraryHelper();
-        library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser(), librarian);
+        library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser());
         library.authenticate("222-3232", "supriya7");
 
     }

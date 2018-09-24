@@ -10,7 +10,7 @@ import static biblioteca.common.Constants.*;
 public class ReturnBookCommand implements Command {
 
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
-        if (library.isLogged()) {
+        if (library.isCurrentUserLogged()) {
             output.print(ENTER__BOOK_NAME_TO_RETURN);
             String inputString = input.readInputString();
             Book bookToCheckout = new Book(inputString, null, 1);

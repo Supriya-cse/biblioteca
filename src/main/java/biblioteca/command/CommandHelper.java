@@ -26,6 +26,9 @@ public class CommandHelper {
         if (choice.equalsIgnoreCase("Login")) {
             return new LoginCommand();
         }
+        if (choice.equalsIgnoreCase("Display User Information")) {
+            return new DisplayUserInformationCommand();
+        }
         return new InvalidCommand();
     }
 }

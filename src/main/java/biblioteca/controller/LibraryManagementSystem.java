@@ -11,7 +11,7 @@ import static biblioteca.common.Constants.*;
 
 public class LibraryManagementSystem {
     private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
-            "List of Movies", "Check out Movie", "Login"};
+            "List of Movies", "Check out Movie", "Login", "Display User Information"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;
@@ -71,4 +71,5 @@ public class LibraryManagementSystem {
             i++;
         }
     }
+
 }

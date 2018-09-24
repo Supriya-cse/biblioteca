@@ -1,22 +1,20 @@
 package biblioteca.model;
-
-//Place to find collection of items
-
 import java.util.ArrayList;
 import java.util.List;
+import static biblioteca.common.Constants.NOT_LOGGED;
+
+//Place to find collection of items
 
 public class Library {
     private List<LibraryItem> checkedOutItems = new ArrayList<>();
     private List<LibraryItem> items;
     private List<User> users;
     private User currentUser;
-    private CheckoutListener librarian;
 
-    public Library(List<LibraryItem> libraryItems, List<User> users, CheckoutListener librarian) {
+    public Library(List<LibraryItem> libraryItems, List<User> users) {
         this.items = libraryItems;
         this.users = users;
         this.currentUser = null;
-        this.librarian = librarian;
     }
 
     public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
@@ -30,20 +28,24 @@ public class Library {
     }
 
     public boolean authenticate(String libraryNo, String password) {
-        for (int var = 0; var < users.size(); var++) {
-            if (users.get(var).checkCredentials(libraryNo, password)) {
-                currentUser = users.get(var);
+        for (User user : users) {
+            if (user.checkCredentials(libraryNo, password)) {
+                currentUser = user;
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isLogged() {
-        if (currentUser == null) {
-            return false;
+    public String currentUserInformation() {
+        if (isCurrentUserLogged()) {
+            return currentUser.toString();
         }
-        return true;
+        return NOT_LOGGED;
+    }
+
+    public boolean isCurrentUserLogged() {
+        return currentUser != null;
     }
 
 
@@ -52,7 +54,6 @@ public class Library {
             if (items.get(var).equals(checkoutItem)) {
                 checkedOutItems.add(items.get(var));
                 items.remove(items.get(var));
-                librarian.inform();
                 return true;
             }
         }

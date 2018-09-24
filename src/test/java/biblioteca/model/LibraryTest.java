@@ -3,7 +3,6 @@ package biblioteca.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LibraryTest {
-    private CheckoutListener librarian;
     private List<LibraryItem> libraryItems;
-    private List<User> users;
     private Library library;
 
     @BeforeEach
     void init() {
-        librarian = Mockito.mock(CheckoutListener.class);
         libraryItems = listOfLibraryItems();
-        users = listOfUser();
-        library = new Library(libraryItems, users, librarian);
+        List<User> users = listOfUser();
+        library = new Library(libraryItems, users);
     }
 
     @DisplayName("Test for displaying list of items")
@@ -84,18 +80,7 @@ class LibraryTest {
     @Test
     void testForIsLoggedUsers() {
         library.authenticate("222-3232", "supriya7");
-        assertTrue(library.isLogged());
-    }
-
-    @DisplayName("should inform librarian when user checks out book")
-    @Test
-    void testForInformingLibrarianWhenABookIsCheckedOut() {
-        String checkOutBookTitle = "Sherlock Homes";
-
-        library.authenticate("222-3232", "supriya7");
-        library.checkOutItem(new Book(checkOutBookTitle, null, 1000));
-        Mockito.verify(librarian).inform();
-
+        assertTrue(library.isCurrentUserLogged());
     }
 
 

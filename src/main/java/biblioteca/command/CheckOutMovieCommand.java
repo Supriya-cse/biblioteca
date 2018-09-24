@@ -10,8 +10,7 @@ import static biblioteca.common.Constants.*;
 public class CheckOutMovieCommand implements Command {
 
     public void perform(ConsoleOutputDriver output, InputDriver input, Library library) {
-        System.out.println(library.isLogged());
-        if (library.isLogged()) {
+        if (library.isCurrentUserLogged()) {
             output.print(ENTER_MOVIE_NAME_TO_CHECK_OUT);
             String inputString = input.readInputString();
             Movie movieToCheckout = new Movie(inputString, null, 1000, "10");

@@ -15,13 +15,10 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean checkCredentials(String libraryNo, String password) {
+    boolean checkCredentials(String libraryNo, String password) {
         return this.libraryNo.equals(libraryNo) && this.password.equals(password);
     }
 
-    public boolean canLogin() {
-        return true;
-    }
 
     @Override
     public boolean equals(Object other) {
@@ -39,4 +36,8 @@ public class User {
                 this.phoneNumber.equals(that.phoneNumber);
     }
 
+    @Override
+    public String toString() {
+        return this.name + "" + this.email + "" + this.phoneNumber;
+    }
 }
