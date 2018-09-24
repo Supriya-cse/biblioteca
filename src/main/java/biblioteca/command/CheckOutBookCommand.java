@@ -21,8 +21,7 @@ public class CheckOutBookCommand implements Command {
             } else {
                 output.print(SUCCESSFUL_CHECKOUT);
             }
-        }
-        else {
+        } else {
             output.print(NOT_LOGGED);
         }
     }

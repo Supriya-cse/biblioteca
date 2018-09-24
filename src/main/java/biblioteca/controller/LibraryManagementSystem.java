@@ -5,12 +5,13 @@ import biblioteca.command.CommandHelper;
 import biblioteca.model.Library;
 import biblioteca.view.ConsoleOutputDriver;
 import biblioteca.view.InputDriver;
+
 import static biblioteca.common.Constants.*;
 
 
 public class LibraryManagementSystem {
     private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
-            "List of Movies", "Check out Movie","Login"};
+            "List of Movies", "Check out Movie", "Login"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;

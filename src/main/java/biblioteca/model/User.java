@@ -19,7 +19,9 @@ public class User {
         return this.libraryNo.equals(libraryNo) && this.password.equals(password);
     }
 
-    public boolean canLogin(){ return true; }
+    public boolean canLogin() {
+        return true;
+    }
 
     @Override
     public boolean equals(Object other) {

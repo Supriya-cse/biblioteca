@@ -11,7 +11,7 @@ public class BibliotecaApplication {
 
     public static void main(String args[]) {
         LibraryHelper libraryHelper = new LibraryHelper();
-        Library library = new Library(libraryHelper.listOfLibraryItems(),libraryHelper.listOfUser());
+        Library library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser());
         ConsoleOutputDriver consoleOutputDriver = new ConsoleOutputDriver();
         InputDriver inputDriver = new InputDriver();
         CommandHelper commandHelper = new CommandHelper();

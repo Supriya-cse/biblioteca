@@ -86,6 +86,16 @@ class LibraryTest {
         assertTrue(library.authenticate("222-3232", "supriya7"));
     }
 
+    @DisplayName("should return true if current user is logged in ")
+    @Test
+    void testForIsLoggedUsers() {
+        List<LibraryItem> libraryItems = listOfLibraryItems();
+        List<User> users = listOfUser();
+        Library library = new Library(libraryItems, users);
+
+        library.authenticate("222-3232", "supriya7");
+        assertTrue(library.isLogged());
+    }
 
     private List<LibraryItem> listOfLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();

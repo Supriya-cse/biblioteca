@@ -20,8 +20,7 @@ public class ReturnBookCommand implements Command {
             } else {
                 output.print(RETURN_UNSUCCESSFUL);
             }
-        }
-        else{
+        } else {
             output.print(NOT_LOGGED);
         }
     }

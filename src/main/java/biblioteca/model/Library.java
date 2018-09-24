@@ -11,10 +11,10 @@ public class Library {
     private List<User> users;
     private User currentUser;
 
-    public Library(List<LibraryItem> libraryItems,List<User> users) {
+    public Library(List<LibraryItem> libraryItems, List<User> users) {
         this.items = libraryItems;
-        this.users=users;
-        this.currentUser=null;
+        this.users = users;
+        this.currentUser = null;
     }
 
     public List<String> getListOfLibraryItems(Class<? extends LibraryItem> itemClass) {
@@ -27,7 +27,7 @@ public class Library {
         return requiredItems;
     }
 
-    public boolean authenticate(String libraryNo, String password){
+    public boolean authenticate(String libraryNo, String password) {
         for (int var = 0; var < users.size(); var++) {
             if (users.get(var).checkCredentials(libraryNo, password)) {
                 currentUser = users.get(var);
@@ -37,8 +37,8 @@ public class Library {
         return false;
     }
 
-    public boolean isLogged(){
-        if(currentUser==null){
+    public boolean isLogged() {
+        if (currentUser == null) {
             return false;
         }
         return true;

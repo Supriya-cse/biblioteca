@@ -21,8 +21,7 @@ public class CheckOutMovieCommand implements Command {
             } else {
                 output.print(SUCCESSFUL_CHECKOUT_OF_MOVIE);
             }
-        }
-        else {
+        } else {
             output.print(NOT_LOGGED);
         }
     }

@@ -21,8 +21,7 @@ public class ReturnMovieCommand implements Command {
             } else {
                 output.print(RETURN_MOVIE_UNSUCCESSFUL);
             }
-        }
-        else {
+        } else {
             output.print(NOT_LOGGED);
         }
     }
