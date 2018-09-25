@@ -8,7 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static biblioteca.common.Constants.*;
+import static biblioteca.common.Constants.SUCCESFUL_LOGOUT;
+import static biblioteca.common.Constants.UNSUCCESFUL_LOGOUT;
 import static org.mockito.Mockito.when;
 
 public class LogOutCommandTest {

@@ -38,5 +38,15 @@ public class CheckOutMovieCommandTest {
         Mockito.verify(output).print(SUCCESSFUL_CHECKOUT_OF_MOVIE);
     }
 
+    @DisplayName("should return unsuccessful mesage when checkout movie")
+    @Test
+    void testForCheckingOutUnSuccessfulMessage() {
+        library = new Library(libraryHelper.listOfLibraryItems(), libraryHelper.listOfUser());
+        library.authenticate("222-3232", "supriya7");
+        when(input.readInputString()).thenReturn("Hchiko");
+        checkOutMovieCommand = new CheckOutMovieCommand();
+        checkOutMovieCommand.perform(output, input, library);
+    }
+
 
 }

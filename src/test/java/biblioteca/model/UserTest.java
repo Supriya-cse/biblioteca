@@ -3,8 +3,7 @@ package biblioteca.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     private User libraryUser;
@@ -26,17 +25,17 @@ class UserTest {
 
     @Test
     void shouldReturnFalseWhenVerifyEqualityBetweenLibraryUserAndNull() {
-        assertFalse(this.libraryUser.equals(null));
+        assertNotEquals(null, this.libraryUser);
     }
 
     @Test
     void shouldReturnFalseWhenVerifyEqualityBetweenLibraryUserAndString() {
-        assertFalse(this.libraryUser.equals("libraryUser"));
+        assertNotEquals("libraryUser", this.libraryUser);
     }
 
     @Test
     void shouldReturnTrueWhenVerifyEqualityBetweenLibraryUserAndItSelf() {
-        assertTrue(this.libraryUser.equals(this.libraryUser));
+        assertEquals(this.libraryUser, this.libraryUser);
     }
 
 }

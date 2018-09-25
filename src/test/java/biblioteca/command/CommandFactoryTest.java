@@ -50,4 +50,34 @@ class CommandFactoryTest {
         assertEquals(command.getClass(), ListMoviesCommand.class);
     }
 
+    @Test
+    void testForCheckOutMovieCommand() {
+        Command command = this.commandFactory.getCommand("Check out Movie");
+        assertEquals(command.getClass(), CheckOutMovieCommand.class);
+    }
+
+    @Test
+    void testForReturnMovieCommand() {
+        Command command = this.commandFactory.getCommand("Return Movie");
+        assertEquals(command.getClass(), ReturnMovieCommand.class);
+    }
+
+    @Test
+    void testForLoginCommand() {
+        Command command = this.commandFactory.getCommand("Login");
+        assertEquals(command.getClass(), LoginCommand.class);
+    }
+
+    @Test
+    void testForDisplayUserInformationCommand() {
+        Command command = this.commandFactory.getCommand("Display User Information");
+        assertEquals(command.getClass(), DisplayUserInformationCommand.class);
+    }
+
+    @Test
+    void testForLogOutCommand() {
+        Command command = this.commandFactory.getCommand("Logout");
+        assertEquals(command.getClass(), LogOutCommand.class);
+    }
+
 }

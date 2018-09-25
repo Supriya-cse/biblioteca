@@ -83,6 +83,21 @@ class LibraryTest {
         assertTrue(library.isCurrentUserLogged());
     }
 
+    @DisplayName("should logout current user")
+    @Test
+    void testForLogOut() {
+        library.authenticate("222-3232", "supriya7");
+        assertTrue(library.logout());
+    }
+
+    @DisplayName("should return current user information")
+    @Test
+    void testForDisplayingCurrentInformation() {
+        library.authenticate("222-3232", "supriya7");
+        String expectedString = "Supriya supriya.muppiri@gmail.com 9490887155";
+        assertEquals(library.currentUserInformation(), expectedString);
+    }
+
 
     private List<LibraryItem> listOfLibraryItems() {
         List<LibraryItem> libraryItems = new ArrayList<>();

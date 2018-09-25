@@ -11,7 +11,7 @@ import static biblioteca.common.Constants.*;
 //Controls all operations on particular Library
 public class LibraryManagementSystem {
     private static String[] options = {"Quit Application", "List of Books", "Checkout Book", "Return Book",
-                                       "List of Movies", "Check out Movie", "Login", "Display User Information","Logout"};
+            "List of Movies", "Check out Movie", "Login", "Display User Information", "Logout"};
     private ConsoleOutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;

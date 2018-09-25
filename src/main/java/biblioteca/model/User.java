@@ -38,6 +38,6 @@ public class User {
 
     @Override
     public String toString() {
-        return this.name + "" + this.email + "" + this.phoneNumber;
+        return this.name + " " + this.email + " " + this.phoneNumber;
     }
 }

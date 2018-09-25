@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static biblioteca.common.Constants.RETURN_MOVIE_SUCCESSFUL;
+import static biblioteca.common.Constants.RETURN_MOVIE_UNSUCCESSFUL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -44,4 +46,23 @@ public class ReturnMovieCommandTest {
         assertTrue(library.returnItem(new Movie("Hachiko", null, 1000, "9")));
     }
 
+    @DisplayName("should display succesful message when book is returned successfully")
+    @Test
+    void testForDisplayingSuccessMessage() {
+        when(input.readInputString()).thenReturn("Hachiko");
+        library.checkOutItem(new Movie("Hachiko", null, 1000, "9"));
+        returnMovieCommand = new ReturnMovieCommand();
+        returnMovieCommand.perform(output, input, library);
+        Mockito.verify(output).print(RETURN_MOVIE_SUCCESSFUL);
+    }
+
+    @DisplayName("should display unsuccesful message when book is returned successfully")
+    @Test
+    void testForDisplayingUnSuccessMessage() {
+        when(input.readInputString()).thenReturn("Hachiko");
+        library.checkOutItem(new Movie("Hachi", null, 1000, "9"));
+        returnMovieCommand = new ReturnMovieCommand();
+        returnMovieCommand.perform(output, input, library);
+        Mockito.verify(output).print(RETURN_MOVIE_UNSUCCESSFUL);
+    }
 }

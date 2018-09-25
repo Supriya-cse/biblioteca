@@ -2,7 +2,8 @@ package biblioteca.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class MovieTest {
     @Test
@@ -27,7 +28,7 @@ class MovieTest {
         String rating = "9";
         Movie movie = new Movie(title, director, yearReleased, rating);
 
-        assertFalse(movie.equals(null));
+        assertNotEquals(null, movie);
     }
 
     @Test
@@ -39,7 +40,7 @@ class MovieTest {
         Movie aMovie = new Movie(title, director, yearReleased, rating);
         String movie = "movie";
 
-        assertFalse(aMovie.equals(movie));
+        assertNotEquals(aMovie, movie);
     }
 
     @Test
@@ -51,7 +52,7 @@ class MovieTest {
         Movie aMovie = new Movie(title, director, yearReleased, rating);
         Movie sameMovie = new Movie(title, director, yearReleased, rating);
 
-        assertTrue(aMovie.equals(sameMovie));
+        assertEquals(aMovie, sameMovie);
     }
 
 }

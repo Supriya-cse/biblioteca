@@ -49,7 +49,7 @@ class CheckOutBookCommandTest {
 
     @DisplayName("should display success message after checking out successfully")
     @Test
-    void testForDisplayingSuccessfulCheckout(){
+    void testForDisplayingSuccessfulCheckout() {
         when(input.readInputString()).thenReturn("Harry Potter");
         checkOutBookCommand = new CheckOutBookCommand();
         checkOutBookCommand.perform(output, input, library);
